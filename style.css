@@ -127,3 +127,54 @@ li:last-child {
 .delete-btn:hover {
     background-color: #cc0000;
 }
+
+hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid var(--li-border);
+}
+
+#partnership-section h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    padding: 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--app-bg);
+    color: var(--text-color);
+    font-family: inherit;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
