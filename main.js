@@ -2,9 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTodoForm = document.getElementById('add-todo-form');
     const newTodoInput = document.getElementById('new-todo-input');
     const todoList = document.getElementById('todo-list');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Theme logic
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        let theme = 'light';
+        if (body.classList.contains('dark-mode')) {
+            theme = 'dark';
+            themeToggle.textContent = '☀️';
+        } else {
+            themeToggle.textContent = '🌙';
+        }
+        localStorage.setItem('theme', theme);
+    });
 
     let todos = [];
-
+...
     function renderTodos() {
         todoList.innerHTML = '';
         todos.forEach((todo, index) => {

@@ -1,26 +1,61 @@
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --app-bg: #fff;
+    --app-shadow: rgba(0, 0, 0, 0.1);
+    --border-color: #ccc;
+    --li-border: #eee;
+    --completed-color: #aaa;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --app-bg: #2d2d2d;
+    --app-shadow: rgba(0, 0, 0, 0.5);
+    --border-color: #444;
+    --li-border: #444;
+    --completed-color: #777;
+}
+
 body {
     font-family: sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #app {
-    background-color: #fff;
+    background-color: var(--app-bg);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--app-shadow);
     padding: 2rem;
     width: 100%;
     max-width: 500px;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: var(--text-color);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
 }
 
 #add-todo-form {
@@ -32,8 +67,10 @@ h1 {
 #new-todo-input {
     flex: 1;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    background-color: var(--app-bg);
+    color: var(--text-color);
 }
 
 button {
@@ -58,7 +95,8 @@ li {
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--li-border);
+    cursor: pointer;
 }
 
 li:last-child {
@@ -67,7 +105,7 @@ li:last-child {
 
 li.completed {
     text-decoration: line-through;
-    color: #aaa;
+    color: var(--completed-color);
 }
 
 .delete-btn {
