@@ -1,41 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do List</title>
-    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주변 기름값 안내 - 내 주변 최저가 주유소 찾기</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3039806351490146"
+     crossorigin="anonymous"></script>
+    <!-- Kakao Maps API (Your App Key will be needed here) -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_MAP_API_KEY&libraries=services,clusterer"></script>
 </head>
 <body>
     <div id="app">
-        <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
-        <h1>My To-Do List</h1>
-        <form id="add-todo-form">
-            <input type="text" id="new-todo-input" placeholder="Add a new task..." required />
-            <button type="submit">Add</button>
-        </form>
-        <ul id="todo-list"></ul>
+        <header>
+            <h1>⛽ 주변 기름값 안내</h1>
+            <div class="filters">
+                <select id="oil-type">
+                    <option value="B027">휘발유</option>
+                    <option value="D047">경유</option>
+                    <option value="K015">LPG</option>
+                </select>
+                <button id="refresh-btn">🔄 새로고침</button>
+            </div>
+        </header>
 
-        <hr />
+        <main>
+            <div id="map-container">
+                <div id="map"></div>
+                <button id="current-location-btn" title="내 위치로 이동">📍</button>
+            </div>
+            
+            <div id="list-container">
+                <div class="list-header">
+                    <span id="station-count">주유소 0개 발견</span>
+                    <select id="sort-type">
+                        <option value="price">가격순</option>
+                        <option value="distance">거리순</option>
+                    </select>
+                </div>
+                <ul id="station-list">
+                    <!-- 리스트 아이템이 여기에 동적으로 추가됩니다 -->
+                    <li class="loading">주변 주유소를 찾는 중입니다...</li>
+                </ul>
+            </div>
+        </main>
 
-        <div id="partnership-section">
-            <h2>Partnership Inquiry</h2>
-            <form action="https://formspree.io/f/xzdkzljn" method="POST" id="partnership-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required />
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="How can we work together?" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Inquiry</button>
-            </form>
-        </div>
+        <footer>
+            <p>데이터 제공: 한국석유공사 오피넷</p>
+        </footer>
     </div>
     <script src="main.js"></script>
 </body>

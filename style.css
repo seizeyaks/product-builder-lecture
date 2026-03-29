@@ -1,180 +1,204 @@
 :root {
-    --bg-color: #f4f4f4;
+    --primary-color: #2c3e50;
+    --accent-color: #f39c12;
     --text-color: #333;
-    --app-bg: #fff;
-    --app-shadow: rgba(0, 0, 0, 0.1);
-    --border-color: #ccc;
-    --li-border: #eee;
-    --completed-color: #aaa;
+    --bg-color: #f8f9fa;
+    --border-color: #ddd;
+    --white: #ffffff;
 }
 
-body.dark-mode {
-    --bg-color: #1a1a1a;
-    --text-color: #f4f4f4;
-    --app-bg: #2d2d2d;
-    --app-shadow: rgba(0, 0, 0, 0.5);
-    --border-color: #444;
-    --li-border: #444;
-    --completed-color: #777;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    flex-direction: column;
 }
 
 #app {
-    background-color: var(--app-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px var(--app-shadow);
-    padding: 2rem;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-h1 {
-    text-align: center;
-    margin-top: 0;
-}
-
-#theme-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-}
-
-#add-todo-form {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-#new-todo-input {
-    flex: 1;
-    padding: 0.6rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: var(--app-bg);
-    color: var(--text-color);
-}
-
-button[type="submit"] {
-    padding: 0.6rem 1.2rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-#todo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--li-border);
-}
-
-li:last-child {
-    border-bottom: none;
-}
-
-.todo-text {
-    flex: 1;
-    cursor: pointer;
-}
-
-.completed .todo-text {
-    text-decoration: line-through;
-    color: var(--completed-color);
-}
-
-.delete-btn {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin-left: 1rem;
-}
-
-.delete-btn:hover {
-    background-color: #cc0000;
-}
-
-hr {
-    margin: 2rem 0;
-    border: 0;
-    border-top: 1px solid var(--li-border);
-}
-
-#partnership-section h2 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.form-group {
-    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    height: 100%;
 }
 
-.form-group label {
-    font-size: 0.9rem;
-    font-weight: bold;
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.form-group input, 
-.form-group textarea {
-    padding: 0.6rem;
+header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+select, button {
+    padding: 0.5rem;
+    border-radius: 4px;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: var(--app-bg);
-    color: var(--text-color);
-    font-family: inherit;
+    font-size: 0.9rem;
 }
 
-.submit-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #28a745;
-    color: white;
+#refresh-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1rem;
-    transition: background-color 0.2s;
 }
 
-.submit-btn:hover {
-    background-color: #218838;
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#map-container {
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#current-location-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+}
+
+#list-container {
+    height: 50%;
+    background-color: var(--white);
+    overflow-y: auto;
+    border-top: 2px solid var(--border-color);
+}
+
+.list-header {
+    padding: 0.8rem 1rem;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+#station-list {
+    list-style: none;
+}
+
+.station-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.station-item:hover {
+    background-color: #f1f1f1;
+}
+
+.station-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.station-info p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.station-price {
+    text-align: right;
+}
+
+.price-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.price-unit {
+    font-size: 0.8rem;
+}
+
+.distance {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+footer {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+    background-color: #eee;
+    color: #777;
+}
+
+.loading {
+    padding: 2rem;
+    text-align: center;
+    color: #888;
+}
+
+/* Custom Overlay Style */
+.price-overlay {
+    background: var(--accent-color);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #d35400;
+}
+
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+    #map-container {
+        height: 100%;
+        flex: 2;
+    }
+    #list-container {
+        height: 100%;
+        flex: 1;
+        border-top: none;
+        border-left: 2px solid var(--border-color);
+    }
 }
